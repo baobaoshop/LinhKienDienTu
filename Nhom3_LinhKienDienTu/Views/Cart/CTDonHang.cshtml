@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Nhom3_LinhKienDienTu.Models.CT_DONHANG>
+
+@{
+    ViewBag.Title = "CTDonHang";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+<a href="@Url.Action("DonHang","Cart")" class="btn btn-warning"> Quay lại</a>
+
+@foreach (var item in Model)
+{
+    <div class="giohang-left__item">
+        <a href="#"><img src="@Url.Content("~/Assets/Images/" + item.MALK + ".jpg")" alt="" class="left-img" height="170px"></a>
+        <div class="left-content">
+            <a href="#" class="left__tensanpham">@item.LINHKIEN.TENLK</a>
+            <span class="left__price">Đơn giá: @item.LINHKIEN.DONGIA VND</span>
+
+            <div class="left__soluong">
+                <span class="text-center" style="flex:1; line-height:38px;">Số lượng: @item.SOLUONG</span>
+            </div>
+            <span class="left__price">Thành tiền: @item.THANHTIEN VND</span>
+        </div>
+        <button class=" btnViewDetail" type="button" data-id="@item.MALK" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #333; background-color:#fff; text-decoration: none; border-style:none">
+            <div class="text-center btn btn-primary" style="height:50px; margin: 60px 0px; width:150px;">
+                    <span class=" text-center" style="color:#fff; line-height:36px; text-decoration:none">Xem</span>
+            </div>
+        </button>
+    </div>
+}

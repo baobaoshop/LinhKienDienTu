@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_LinhKienDienTu" Class="dbLinhKienDienTuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=KHANG-HUYNH\TESTD8;Initial Catalog=QL_LinhKienDienTu;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_LinhKienDienTuConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CT_DONHANG" Member="CT_DONHANGs">
+    <Type Name="CT_DONHANG">
+      <Column Name="MADH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALK" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="THANHTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="DONHANG_CT_DONHANG" Member="DONHANG" ThisKey="MADH" OtherKey="MADH" Type="DONHANG" IsForeignKey="true" />
+      <Association Name="LINHKIEN_CT_DONHANG" Member="LINHKIEN" ThisKey="MALK" OtherKey="MALK" Type="LINHKIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHASX" Member="NHASXes">
+    <Type Name="NHASX">
+      <Column Name="MANSX" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNSX" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="NHASX_LINHKIEN" Member="LINHKIENs" ThisKey="MANSX" OtherKey="MANSX" Type="LINHKIEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DONHANG" Member="DONHANGs">
+    <Type Name="DONHANG">
+      <Column Name="MADH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NGAYDH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MAKH" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="GIAMGIA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="THANHTOAN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DONHANG_CT_DONHANG" Member="CT_DONHANGs" ThisKey="MADH" OtherKey="MADH" Type="CT_DONHANG" />
+      <Association Name="KHACHHANG_DONHANG" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GIOHANG" Member="GIOHANGs">
+    <Type Name="GIOHANG">
+      <Column Name="MAKH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALK" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KHACHHANG_GIOHANG" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
+      <Association Name="LINHKIEN_GIOHANG" Member="LINHKIEN" ThisKey="MALK" OtherKey="MALK" Type="LINHKIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
+    <Type Name="KHACHHANG">
+      <Column Name="MAKH" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENKH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GIOITINH" Type="System.String" DbType="NVarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CCCD" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="MATKHAU" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="KHACHHANG_DONHANG" Member="DONHANGs" ThisKey="MAKH" OtherKey="MAKH" Type="DONHANG" />
+      <Association Name="KHACHHANG_GIOHANG" Member="GIOHANGs" ThisKey="MAKH" OtherKey="MAKH" Type="GIOHANG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LINHKIEN" Member="LINHKIENs">
+    <Type Name="LINHKIEN">
+      <Column Name="MALK" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENLK" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SOLUONGTON" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MANSX" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="MALOAI" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="NAMSX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DONGIA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="LINHKIEN_CT_DONHANG" Member="CT_DONHANGs" ThisKey="MALK" OtherKey="MALK" Type="CT_DONHANG" />
+      <Association Name="LINHKIEN_GIOHANG" Member="GIOHANGs" ThisKey="MALK" OtherKey="MALK" Type="GIOHANG" />
+      <Association Name="NHASX_LINHKIEN" Member="NHASX" ThisKey="MANSX" OtherKey="MANSX" Type="NHASX" IsForeignKey="true" />
+      <Association Name="LOAILK_LINHKIEN" Member="LOAILK" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAILK" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAILK" Member="LOAILKs">
+    <Type Name="LOAILK">
+      <Column Name="MALOAI" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="LOAILK_LINHKIEN" Member="LINHKIENs" ThisKey="MALOAI" OtherKey="MALOAI" Type="LINHKIEN" />
+    </Type>
+  </Table>
+</Database>

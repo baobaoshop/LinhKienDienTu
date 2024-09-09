@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Nhom3_LinhKienDienTu.Models.LOAILK>
+    @{
+        foreach (var item in Model)
+        {
+            <li class="list-group-item ">
+                <a class="FooterLoaiLK" href="#">@item.TENLOAI</a>
+            </li>
+
+        }
+    }

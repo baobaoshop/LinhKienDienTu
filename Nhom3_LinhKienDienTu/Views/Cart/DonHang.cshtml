@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Nhom3_LinhKienDienTu.Models.DONHANG>
+
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+    List<int> lstSL = ViewBag.lstSL as List<int>;
+    int i = 0;
+}
+
+
+
+<div id="GHcontainer">
+    <h1 class="giohang-title">ĐƠN HÀNG CỦA BẠN</h1>
+    <div class="giohang">
+        <div class="giohang-left">
+            <div class="left-ship">
+                <img src="https://theme.hstatic.net/1000030244/1000943806/14/icon-free.png?v=6258" alt="" class="left-ship__img">
+                <div class="left-ship__title">GIAO HÀNG NHANH 2H nội thành TPHCM.</div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="giohang-left__item hieuung" style="background-color: #bad9ff; color: #fff; border-radius: 10px; font-family: 'Times New Roman', Times, serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div style="width:20%;">
+                        <span class="left__price">Mã đơn hàng: @item.MADH </span>
+                        <span class="left__price">Ngày mua: @item.NGAYDH </span>
+                    </div>
+                    <div style="width:2px; background-color:white;"></div>
+                    <div class="left-content">
+                        <span class="left__price">Tổng sản phẩm: @lstSL[i]</span>
+                        @{ i++;}
+                        <span class="left__price">Giảm giá: @item.GIAMGIA VND</span>
+                        <span class="left__price">Tổng tiền: @item.THANHTOAN</span>
+                        <span class="left__price">Trạng thái: @item.TRANGTHAI</span>
+
+                    </div>
+                    <div class="text-center btn btn-danger" style="background-color: #ff2121; height: 50px; margin: 60px 10px; width: 170px;">
+                        <a href="@Url.Action("CTDonHang","Cart", new { MADH = item.MADH.Trim() })" class=" text-center" style="color:#fff; line-height:36px; text-decoration:none">Xem chi tiết</a>
+                    </div>
+                    @if (item.TRANGTHAI != "Đã giao xong")
+                    {
+                        <div class="text-center btn btn-danger" style="background-color: #ff2121; height: 50px; margin: 60px 10px; width: 170px;">
+                            <a href="@Url.Action("DaNhanHang","Cart", new { MADH = item.MADH.Trim() })" class=" text-center" style="color:#fff; line-height:36px; text-decoration:none">Đã nhận hàng</a>
+                        </div>
+                    }
+                </div>
+            }
+
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Nhom3_LinhKienDienTu.Models.LOAILK>
+
+           
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active disabled">
+        LOẠI LINH KIỆN
+    </a>
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("TheoLoaiLK", "Product",new { id = item.MALOAI})" class="list-group-item list-group-item-action">@item.TENLOAI</a>
+    }
+
+</div>

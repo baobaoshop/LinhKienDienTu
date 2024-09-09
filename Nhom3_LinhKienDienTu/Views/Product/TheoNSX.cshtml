@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@model IEnumerable<Nhom3_LinhKienDienTu.Models.LINHKIEN>
+@if (ViewBag.NSX == 0)
+{
+    <h2 class="text-center">ỐI!!!</h2>
+    <h2 class="text-center">KHÔNG CÓ SẢN PHẨM THUỘC NHÀ SẢN XUẤT NÀY</h2>
+    <h2 class="text-center">QUAY LẠI <a href="@Url.Action("TrangChu","Home")" class="btn btn-warning">TRANG CHỦ</a> MUA SẢN PHẢM KHÁC NHÉ</h2>
+
+    <div style="margin:auto; text-align:center;">
+        <img src="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-red-shopping-cart-icon-png-free-illustration-image_1187825.jpg" height="200px" />
+    </div>
+}
+<div class="suggestion__slider" m-3 style="flex-wrap: wrap; justify-content:space-between">
+    @foreach (var item in Model)
+    {
+        <button class="suggestion__link btnViewDetail" type="button" data-id="@item.MALK" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #333; text-decoration: none; border-style:none">
+            <div class="suggestion__card" style="width:250px;">
+                <img src="@Url.Content("~/Assets/Images/" + item.MALK + ".jpg")" alt="" class="suggestion__img">
+                <img src="https://theme.hstatic.net/1000030244/1000943806/14/handle_sale_img6.png?v=5841" alt="" class="suggestion__img-border">
+                <img src="https://theme.hstatic.net/1000030244/1000943806/14/icon_tag_1.png?v=5841" alt="" class="suggestion__img-border-suggestion">
+                <div class="suggestion__card-body">
+                    <div style="height:72px;">
+                        <p class="suggestion__card-title" style=" font-size:24px;">
+                            @if (item.TENLK.Length > 30)
+                            {
+
+                                @item.TENLK.Substring(0, 30) <span>...</span>
+
+                            }
+                            else
+                            {
+                                @item.TENLK
+                            }
+                        </p>
+                    </div>
+
+                    <span class="suggestion__card-price">@item.DONGIA VND</span>
+                    <a style="font-weight:bold;text-decoration:none" href="@Url.Action("ThemGioHang","Cart", new {MALK=item.MALK})" class="suggestion__btn-buy">THÊM VÀO GIỎ</a>
+                </div>
+            </div>
+        </button>
+
+
+    }
+</div>

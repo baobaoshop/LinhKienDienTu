@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+    var TongSl = Session["SlGioHang"];
+}
+@model IEnumerable<Nhom3_LinhKienDienTu.Models.GIOHANG>
+
+@if (ViewBag.Rong)
+{
+    <h1 class="text-center">Ối!!!</h1>
+    <h3 class="text-center">Giỏ hàng của bạn chưa có gì.</h3>
+    <h3 class="text-center">Quay lại <a href="@Url.Action("ShowAllProduct","Product")" class="btn btn-warning">trang sản phẩm</a> mua hàng bạn nhé!!!</h3>
+
+    <div style="margin:auto; text-align:center;">
+        <img src="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-red-shopping-cart-icon-png-free-illustration-image_1187825.jpg" height="200px" />
+    </div>
+}
+else
+{
+    <hr />
+    <div id="GHcontainer">
+        <h1 class="giohang-title">GIỎ HÀNG THẦN KỲ</h1>
+        <div class="giohang">
+            <div class="giohang-left">
+                <div class="left-ship">
+                    <img src="https://theme.hstatic.net/1000030244/1000943806/14/icon-free.png?v=6258" alt="" class="left-ship__img">
+                    <div class="left-ship__title">GIAO HÀNG NHANH 2H nội thành TPHCM.</div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    double thanhtien = double.Parse((item.LINHKIEN.DONGIA * item.SOLUONG).ToString());
+                    <div class="giohang-left__item">
+                        <a href="#"><img src="@Url.Content("~/Assets/Images/" + item.MALK + ".jpg")" alt="" class="left-img" height="170px"></a>
+                        <div class="left-content">
+                            <a href="#" class="left__tensanpham">@item.LINHKIEN.TENLK</a>
+                            <span class="left__price">Đơn giá: @item.LINHKIEN.DONGIA VND</span>
+
+                            <div class="left__soluong">
+                                <a href="@Url.Action("GiamGioHang", "Cart", new { MALK = item.MALK })" class="btn btn-primary" style="width:40px;">-</a>
+                                <span class="text-center" style="flex:1; line-height:38px;">@item.SOLUONG</span>
+                                <a href="@Url.Action("TangGioHang", "Cart", new { MALK = item.MALK })" class="btn btn-primary" style="width:40px;">+</a>
+                            </div>
+                            <span class="left__price">Thành tiền: @thanhtien VND</span>
+                        </div>
+                        <div class="text-center btn btn-danger" style="height:50px; margin: 60px 0px; width:100px;">
+                            <a href="@Url.Action("XoaGioHang","Cart", new {MALK=item.MALK})" class=" text-center" style="color:#fff; line-height:36px; text-decoration:none">Xóa</a>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+    <hr />
+    <dic class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h3 class="">Tổng sản phẩm: @TongSl</h3>
+            <h3 class="">Tổng tiền: @ViewBag.TongTien VND </h3>
+        </div>
+        <div class="col-3">
+            <a href="@Url.Action("ThanhToan","Cart")" class="btn btn-warning" style="font-size:28px">THANH TOÁN</a>
+        </div>
+    </dic>
+}
+

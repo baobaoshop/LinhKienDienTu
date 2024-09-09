@@ -1,0 +1,83 @@
+﻿@{
+    var kt = Session["KT"];
+    var temp = Session["user"] as Nhom3_LinhKienDienTu.Models.UserModel.User;
+    var slGioHang = Session["SlGioHang"];
+
+}
+<div class="header__main">
+<div class="header__container">
+    <div class="header__logo-area">
+        <div class="header__logo-main">
+            <a href="#">
+                <img src="~/Assets/Images/logo.jpg" alt="This is a picture if 4SHOP" class="header__logo-img">
+            </a>
+        </div>
+        <img src="~/Assets/Images/logo.jpg" alt="This is a picture if 4SHOP" class="header__logo-img--mb">
+        
+    </div>
+    <div class="header__search-area">
+        <form action="@Url.Action("SearchSanPham","Product")" class="d-flex" role="search" style="width:100%;">
+            <input class="form-control me-2" type="search" placeholder="Tìm Kiếm Sản Phẩm" aria-label="Search" name="txtSearch" style="flex:1; outline-style:hidden;">
+            <button class="btn btn-outline-success" type="submit" style="width:40px;"><i class="ti-search"></i></button>
+        </form>
+    </div>
+    <div class="header__hotline-area">
+        <div class="header__hotline-number">
+            <a href="tel:19000098" class="header__hotline-link">1900 0098</a>
+            <p>(8h-21h từ T2-Chủ Nhật)</p>
+        </div>
+        <div class="header__hotline-shipping">
+            <img src="https://file.hstatic.net/1000030244/file/giaohang2h_6984c4a90861405ab3c35f77edb41578.png" alt="This is a picture of GiaoHangNhanhTrong2h" class="header__hotline-img">
+        </div>
+    </div>
+    <div class="header__user-cart-area">
+        <div class="header__user">
+            <i class="fa-solid fa-user header__user-icon"></i>
+            <div class="header__user-text">
+                @if (kt == null)
+                {
+                    <span>Đăng nhập</span>
+                    <span>Đăng ký</span>
+                }
+                else
+                {
+                    <span>@temp.SDT</span>
+                    <span>Đơn hàng</span>
+                }
+            </div>
+            <div class="header__user-list">
+                @if (kt == null)
+                {
+                    <ul style="padding:0">
+                        <li>
+                            <a href="@Url.Action("DangNhap","User")" class="header__user-list-item">Đăng nhập</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("DangKy","User")" class="header__user-list-item">Đăng ký</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+            <ul style="padding:0">
+                <li>
+                    <a href="@Url.Action("DonHang","Cart")" class="header__user-list-item">Đơn hàng của tôi</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DangXuat","User")" class="header__user-list-item">Đăng xuat</a>
+                </li>
+            </ul>
+
+                }
+            </div>
+        </div>
+        <div class="header__cart">
+            <a href="@Url.Action("GioHang","Cart")">
+                <img src="https://theme.hstatic.net/1000030244/1000943806/14/cart.png?v=5426" alt="This is a picture of cart symbol">
+                <span class="header__cart-count">@slGioHang</span>
+            </a>
+            
+        </div>
+    </div>
+</div>
+</div>

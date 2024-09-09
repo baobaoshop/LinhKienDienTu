@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link xuanhop-->
+    <link rel="stylesheet" href="~/Assets/Css/smean.css" />
+
+    <!-- link cdn baobaoshop-->
+    <link rel="stylesheet" href="~/Assets/Css/base.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/Assets/themify-icons-font/themify-icons/themify-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/icon/themify-icons/themify-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!--CSS html-->
+    <link rel="shortcut icon" type="x-icon" href="~/Assets/Images/LOGOweb.png">
+    <link rel="stylesheet" href="~/Assets/Css/index.css">
+    <link rel="stylesheet" href="~/Assets/Css/Product.css" />
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Linh Kiện Điện Tử, Công nghệ</title>
+</head>
+<body>
+
+    <!-- Header -->
+    @RenderPage("~/Views/Shared/Header.cshtml")
+    <!--Menu-->
+    <div class="header__nav">
+        <ul class="header__nav-main nav nav-tabs">
+            <li class="header__nav-item nav-item">
+                <a class="header__nav-link nav-link" aria-current="page" href="@Url.Action("TrangChu","Home")">
+                    <img src="https://theme.hstatic.net/1000030244/1000943806/14/service_3.png?v=5565" alt="">
+                    <span style="font-size:18px;">TRANG CHU</span>
+                </a>
+            </li>
+            <li class="header__nav-item nav-item">
+                <a class="header__nav-link nav-link" href="@Url.Action("ShowAllProduct","Product")">
+                    <img src="https://theme.hstatic.net/1000030244/1000943806/14/service_3.png?v=5565" alt="">
+                    <span style="font-size:18px;">TẤT CẢ SẢN PHẨM</span>
+                </a>
+            </li>
+            <li class="header__nav-item nav-item">
+                <a class="header__nav-link nav-link " href="@Url.Action("TinTuc","Home")">
+                    <img src="https://theme.hstatic.net/1000030244/1000943806/14/service_2.png?v=5565" alt="">
+                    <span style="font-size:18px;">TIN TỨC</span>
+                </a>
+            </li>
+            <li class="header__nav-item nav-item">
+                <a class="header__nav-link nav-link " href="@Url.Action("AboutUs","Home")">
+                    <img src="https://theme.hstatic.net/1000030244/1000943806/14/service_3.png?v=5565" alt="">
+                    <span style="font-size:18px;">ABOUTUS</span>
+                </a>
+            </li>
+
+            <li class="header__nav-item nav-item">
+                <a class="header__nav-link nav-link" href="@Url.Action("ThongTinSinhVien", "Home")">
+                    <img src="	https://theme.hstatic.net/1000030244/1000943806/14/service_1.png?v=5565" alt="">
+                    <span style="font-size:18px;">THÔNG TIN SINH VIÊN</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--MainContent-->
+    <div class="m-5 row">
+        <div class="menu-product col-3">
+            <div class="Group-item-menu">
+
+                <div>
+                    <ul class="list-group list-group-flush text-left">
+                        @Html.Action("PartialNSX", "Product")
+                    </ul>
+                </div>
+                <hr />
+                <div>
+                    <ul class="list-group list-group-flush text-left">
+                        @Html.Action("PartialLoaiLK", "Product")
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+        <div class=" col-9" mg-3>
+            @RenderBody()
+
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="height:500px" role="document">
+            <div class="modal-content" style="height:500px">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Chi tiet san pham</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <div id="Product-HinhAnh" style="height:150px"></div>
+                            <i>Hình ảnh minh họa</i>
+                        </div>
+                        <div class="col-7">
+                            <div>
+                                <p><i>Tên sản phẩm: </i></p>
+                                <p class="text-primary" style="font-size:24px; font-weight:600;" id="Product-nAme">123</p>
+                            </div>
+                            <div>
+                                <span><i>Kho: </i></span>
+                                <span class="text-primary" style="font-size:16px; font-weight:600;" id="SoLuongTon">123</span>
+                            </div>
+                            <div>
+                                <span><i>Giá tiền:   </i></span>
+                                <span class="text-primary" id="GiaTien" style="font-size:24px; font-weight:600;">123</span>
+                                <span class="text-primary" style="font-size:24px; font-weight:600;">VND</span>
+                            </div>
+                            <div>
+                                <span><i>Năm sản xuất: </i></span>
+                                <span class="text-primary" style="font-size:16px; font-weight:600;" id="NamSanXuat">123</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <a href="#" id="idhref" type="button" class="btn btn-primary">Thêm vào giỏ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    @RenderPage("~/Views/Shared/Footer.cshtml")
+    <script src="~/Assets/Javascript/sub.js" type="text/javascript"></script>
+    <script src="~/Assets/Javascript/Class1.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100%;
+}
+
+.Header {
+    background-image: linear-gradient(to right,#1435c3 20%,#2343ce 40%);
+}
+
+.Container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+    .Container .logo {
+        display: block;
+        width: 10%;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .Container img {
+        width: 160px;
+        height: 100px;
+        border: none;
+        margin-left: 10px;
+    }
+
+    .Container .serch-bar {
+        margin: 2em 0em 2em 0em;
+    }
+
+        .Container .serch-bar input {
+            width: 40em;
+        }
+
+
+.login {
+    margin-top: 3em;
+    text-align: center;
+}
+
+    .login a {
+        text-decoration: none;
+    }
+
+.shopping {
+    margin-top: 1.8em;
+    margin-left: 2.5em;
+    font-size: 25px;
+}
+
+
+/* Navbar */
+
+#nav_container {
+    margin-top: 2px;
+    width: 100%;
+    background-color: #27273d;
+    align-items: center;
+    width: 100%;
+}
+
+    #nav_container .nav-link {
+        color: #fff;
+        font-weight: 400;
+        font-size: 15px;
+        margin-left: 190px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.banner_container {
+    width: 100%;
+    margin-top: 0px;
+}
+
+    .banner_container img {
+        width: 100%;
+        height: 17em;
+    }
+
+/* SLIDE SHOW */
+
+#carouselExample {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.slideshow_container {
+    margin-top: 30px;
+}
+
+
+/* FOOTER */
+#Footer {
+    border-top: #1435c3 solid 3px;
+    /*background-color: #ffffff;*/
+    background-color:black;
+}
+
+  #Footer .Container {
+        width: 100%;
+        background-color: #ffffff;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+        #Footer .Container .ThongTin, .SanPham, .GocTin, .Media ul {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #Footer .Container div{
+            border-left:1px solid black;
+        }
+        #Footer .Container .Title-Footer {
+            color: blue;
+        }
+
+            #Footer .Container .Title-Footer a {
+                text-decoration: none;
+                color: blue;
+            }
+
+            #Footer .Container ul li {
+                text-decoration: none;
+                color: black;
+                list-style-type: none;
+                font-size: 16px;
+                padding-top:10px;
+            }
+                #Footer .Container ul li a {
+                    text-decoration: none;
+                    color:black;
+                }
+
+/* Footer-bottom */
+#Footer-bottom {
+    margin-top: 1px;
+    height: 100px;
+}
+
+.Footer-bottom {
+    margin-top: 1px;
+}
